@@ -6,6 +6,7 @@ import Icon from '../Icon';
 import { getDisplayedValue } from './Select.helpers';
 
 const Wrapper = styled.div`
+  color: ${COLORS.gray700};
   position: relative;
   padding: 8px 16px;
   border-radius: 8px;
@@ -16,6 +17,10 @@ const Wrapper = styled.div`
   &:focus-within {
     outline: 5px dotted black;
     outline: 5px auto -webkit-focus-ring-color;
+  }
+  
+  &:hover {
+    color: ${COLORS.black};
   }
 `
 
@@ -35,8 +40,12 @@ const DisplayedValue = styled.div`
 
 const ArrowIcon = styled(Icon).attrs(()=> ({id: 'chevron-down'}))`
   position: absolute;
-  right: 8px;
-  top: 5px;
+  right: 6px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  width: var(--size);
+  height: var(--size);
 `
 
 const Select = ({ label, value, onChange, children }) => {
@@ -44,7 +53,7 @@ const Select = ({ label, value, onChange, children }) => {
     return (
         <Wrapper>
             <DisplayedValue>{displayedValue}</DisplayedValue>
-            <ArrowIcon/>
+            <ArrowIcon style={{'--size': 24 + 'px'}}/>
             <InvisibleSelect value={value} onChange={onChange}>
                 {children}
             </InvisibleSelect>
